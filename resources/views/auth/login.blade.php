@@ -147,12 +147,12 @@
     <script>
         function userLoginForm(data){
             if (data.status == true) {
-                notify('success', data.message, 'Login Success');
+                notify('success', data.message, 'Success');
                 setTimeout(function() {
                     window.location.href = "/";
                 }, 1000 * 2);
             } else {
-                notify('error', data.message, 'Login Error');
+                notify('error', data.message, 'Error');
                 $.validator("login_form", data.errors);
             }
         }

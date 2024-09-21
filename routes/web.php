@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegistrationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
  
 Route::get('/', function () {
@@ -32,18 +33,13 @@ Route::middleware(['guest'])->group(function () {
     // Forgote Route 
     Route::any('forgot', [ForgotPasswordController::class, 'ForgotForomShow'])->name('forgot');
     Route::any('forgot_request', [ForgotPasswordController::class, 'forgot_request'])->name('forgot_form');
-
-    // chat 
-
-    // Password Reset Routes
-    Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-    Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
     Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
     Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+    
+
 
 });
 
-Auth::routes();
 
 // Logout 
 Route::any('logout', [LoginController::class, 'logout'])->name('logout');
@@ -52,3 +48,6 @@ Route::any('logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['middleware' => 'auth'], function (){
     Route::any('/dashboard',[HomeController::class, 'index'])->name('dashboard');
 });
+
+
+ 

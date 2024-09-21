@@ -158,12 +158,12 @@
         function registrationCallBack(data){  
 
             if (data.status == true) {
-                notify('success', data.message, 'Registration Success');
+                notify('success', data.message, 'Success');
                 setTimeout(function() {
                     window.location.href = "/";
                 }, 1000 * 2);
             } else {
-                notify('error', data.message, 'Registration Error');
+                notify('error', data.message, 'Error');
                 $.validator("registrion_form", data.errors);
             }
         }

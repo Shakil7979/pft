@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
@@ -15,8 +16,9 @@ class ForgotPasswordController extends Controller
      {  
         return view('auth.forgot');
      } 
- 
-     public function forgot_request(Request $request)
+  
+
+    public function forgot_request(Request $request)
     {
         // Step 1: Validate the email input  
         $validator = Validator::make($request->all(), [
@@ -32,29 +34,35 @@ class ForgotPasswordController extends Controller
         }
 
         $email = $request->input('forgot_password_email');
-        
-        // Log the email being processed
-        Log::info("Attempting to send password reset link to: " . $email);
 
-        // Step 2: Check if the email exists and send reset link
-        $status = Password::sendResetLink(['email' => $email]);
+        try {
+            // Step 2: Attempt to send the reset link
+            $status = Password::sendResetLink(['email' => $email]);
 
-        // Step 3: Return a custom JSON response with 'status' and 'message'
-        if ($status === Password::RESET_LINK_SENT) {
-            return response()->json([
-                'status' => true,
-                'message' => "Password reset link has been sent successfully to your email."
-            ], 200);
-        } else {
-            // Log the error status
-            Log::error("Failed to send password reset link for: " . $email . " Status: " . $status);
+            if ($status === Password::RESET_LINK_SENT) {
+                return response()->json([
+                    'status' => true,
+                    'message' => "Password reset link has been sent successfully to your email."
+                ]);
+            } else {
+                return response()->json([
+                    'status' => false,
+                    'message' => "Email is wrong. Please try again."
+                ]);
+            }
+        } catch (\Exception $e) {
+            // Log detailed error message
+            Log::error('Error sending password reset link: ' . $e->getMessage());
 
             return response()->json([
                 'status' => false,
-                'message' => "Failed to verify email. Please try again."
-            ], 400);
+                'message' => 'An error occurred while sending the password reset link. Please try again later.',
+            ]);
         }
-    }   
+    }
+
+     
+     
 
      
      

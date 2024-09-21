@@ -1,6 +1,4 @@
-
-
-
+ 
 <!DOCTYPE html>
 <html class="loading dark-layout"  lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-layout="dark-layout" data-textdirection="ltr">
 <!-- BEGIN: Head-->
@@ -13,7 +11,7 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Forgot - Finanor</title>
+    <title>Reset - Finanor</title>
     <link rel="apple-touch-icon" href="{{asset('app-assets/images/ico/apple-icon-120.png')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('app-assets/images/ico/favicon.ico')}}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
@@ -79,22 +77,28 @@
                                     <h2 class="brand-text"><img class="logo_img" src="{{asset('main/img/logo.png')}}" alt=""></h2>
                                 </a> 
 
-                                <h4 class="card-title mb-1">Forgot Password? 🔒</h4>
-                                <p class="card-text mb-2">Enter your email and we'll send you instructions to reset your password</p>
+                                <h4 class="card-title mb-1">Reset Password? 🔒</h4>
+                                <p class="card-text mb-2">Your new password must be different from previously used passwords</p>
 
-                                <form class="auth-forgot-password-form mt-2" id='forgot_form' action="{{route('forgot_form')}}" method="POST">
+                                <form class="auth-forgot-password-form mt-2" id='reset_form' action="{{ route('password.update') }}" method="POST">
                                     @csrf
+                                    <input type="hidden" name="token" value="{{ $token }}">
+                                    <input type="hidden" name="email" value="{{ $email }}"> 
+                                    {{-- <div class="mb-1">
+                                        <label for="email" class="form-label">email</label>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="email" value="{{ old('email') }}" aria-describedby="email" tabindex="1" autofocus="" required>
+                                    </div>  --}}
                                     <div class="mb-1">
-                                        <label for="forgot_password_email" class="form-label">Email</label>
-                                        <input type="text" class="form-control" id="forgot_password_email" name="forgot_password_email" placeholder="john@example.com" aria-describedby="forgot_password_email" tabindex="1" autofocus="">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="password" aria-describedby="password" tabindex="1" autofocus="">
+                                    </div> 
+                                    <div class="mb-1">
+                                        <label for="password_confirmation" class="form-label">Confirm Password</label>
+                                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password" aria-describedby="password_confirmation" tabindex="1" autofocus="">
                                     </div> 
 
-                                    <button type="button" class="btn btn-primary w-100 waves-effect waves-float waves-light" id="ForgotFormBtn" onclick="_run(this)" data-el="fg" data-form="forgot_form" data-loading="<div class='spinner-border spinner-border-sm' role='status'></div>" data-callback="ForgotFormCallback" data-btnid="ForgotFormBtn">Send reset link</button>
-                                </form>
-
-                                <p class="text-center mt-2">
-                                    <a href="{{route('login')}}"> <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> Back to login </a>
-                                </p>
+                                    <button type="button" class="btn btn-primary w-100 waves-effect waves-float waves-light" id="ResetFormBtn" onclick="_run(this)" data-el="fg" data-form="reset_form" data-loading="<div class='spinner-border spinner-border-sm' role='status'></div>" data-callback="ResetFormCallback" data-btnid="ResetFormBtn">Reset Password</button>
+                                </form>  
                             <div></div></div>
                         </div>
                         <!-- /Login basic -->
@@ -132,14 +136,15 @@
      <script src="{{asset('common/js/toastr.min.js')}}"></script>
 
     <script>
-        function ForgotFormCallback(data){
-
-            console.log(data.message);
+        function ResetFormCallback(data){
             if (data.status == true) {
-                notify('success', data.message, 'Success'); 
+                notify('success', data.message, 'Success');
+                setTimeout(function() {
+                    window.location.href = "/login";
+                }, 1000 * 2);
             } else {
                 notify('error', data.message, 'Error');
-                $.validator("forgot_form", data.errors);
+                $.validator("reset_form", data.errors);
             }
         }
 
