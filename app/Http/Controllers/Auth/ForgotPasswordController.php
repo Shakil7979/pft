@@ -57,7 +57,7 @@ class ForgotPasswordController extends Controller
             return response()->json([
                 'status' => false,
                 'message' => 'An error occurred while sending the password reset link. Please try again later.',
-            ]);
+            ]); 
         }
     }
 

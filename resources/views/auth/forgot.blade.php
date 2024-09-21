@@ -79,12 +79,12 @@
                                     <h2 class="brand-text"><img class="logo_img" src="{{asset('main/img/logo.png')}}" alt=""></h2>
                                 </a> 
 
-                                <h4 class="card-title mb-1">Forgot Password? 🔒</h4>
-                                <p class="card-text mb-2">Enter your email and we'll send you instructions to reset your password</p>
+                                <h4 class="card-title mb-1 forget_text">Forgot Password? 🔒</h4>
+                                <p class="card-text mb-2 after_send_text">Enter your email and we'll send you instructions to reset your password</p>
 
                                 <form class="auth-forgot-password-form mt-2" id='forgot_form' action="{{route('forgot_form')}}" method="POST">
                                     @csrf
-                                    <div class="mb-1">
+                                    <div class="mb-1 after_hide">
                                         <label for="forgot_password_email" class="form-label">Email</label>
                                         <input type="text" class="form-control" id="forgot_password_email" name="forgot_password_email" placeholder="john@example.com" aria-describedby="forgot_password_email" tabindex="1" autofocus="">
                                     </div> 
@@ -92,7 +92,7 @@
                                     <button type="button" class="btn btn-primary w-100 waves-effect waves-float waves-light" id="ForgotFormBtn" onclick="_run(this)" data-el="fg" data-form="forgot_form" data-loading="<div class='spinner-border spinner-border-sm' role='status'></div>" data-callback="ForgotFormCallback" data-btnid="ForgotFormBtn">Send reset link</button>
                                 </form>
 
-                                <p class="text-center mt-2">
+                                <p class="text-center mt-2 button_hide">
                                     <a href="{{route('login')}}"> <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> Back to login </a>
                                 </p>
                             <div></div></div>
@@ -132,11 +132,14 @@
      <script src="{{asset('common/js/toastr.min.js')}}"></script>
 
     <script>
-        function ForgotFormCallback(data){
-
-            console.log(data.message);
+        function ForgotFormCallback(data){ 
             if (data.status == true) {
                 notify('success', data.message, 'Success'); 
+                $('.after_send_text').html("Please check your email! We've sent you a link to reset your password.");
+                $('.forget_text').html("Check Email");
+                $('.after_hide').hide();
+                $('.button_hide').hide();
+                $('#ForgotFormBtn').hide();
             } else {
                 notify('error', data.message, 'Error');
                 $.validator("forgot_form", data.errors);
