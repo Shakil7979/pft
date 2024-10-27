@@ -35,6 +35,15 @@ Route::middleware(['guest'])->group(function () {
     Route::any('forgot_request', [ForgotPasswordController::class, 'forgot_request'])->name('forgot_form');
     Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
     Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+ 
+    // google registraion 
+    Route::get('auth/google', [RegistrationController::class, 'redirectToGoogle'])->name('auth.google');
+    Route::get('auth/google/callback', [RegistrationController::class, 'handleGoogleCallback']);
+
+    // facebook registration 
+    Route::get('auth/facebook', [RegistrationController::class, 'redirectToFacebook'])->name('auth.facebook');
+    Route::get('auth/facebook/callback', [RegistrationController::class, 'handleFacebookCallback']);
+
     
 
 
