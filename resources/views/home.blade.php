@@ -9,6 +9,17 @@
 <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/tables/datatable/dataTables.bootstrap5.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/tables/datatable/responsive.bootstrap5.min.css')}}"> 
 
+<style> 
+    .avatar.avatar-xl .avatar-content {
+        height: 40px;
+        width: 40px; 
+    }
+    svg.font-large-1 {
+        height: 1rem !important;
+        width: 1rem !important;
+    }
+</style>
+
 @endsection
 
 @section('content')
@@ -29,7 +40,7 @@
                         <div class="text-center">
                             <h1 class="mb-1 text-white">Congratulations {{ Auth::user()->name}} ,</h1>
                             <p class="card-text m-auto w-75">
-                                You have done <strong>57.6%</strong> more sales today. Check your new badge in your profile.
+                                You have savings <strong>57.6%</strong> more today. Check your finance.
                             </p>
                         </div>
                     </div>
@@ -46,8 +57,8 @@
                                 <i data-feather="users" class="font-medium-5"></i>
                             </div>
                         </div>
-                        <h2 class="fw-bolder mt-1">92.6k</h2>
-                        <p class="card-text">Subscribers Gained</p>
+                        <h2 class="fw-bolder mt-1">45.5k</h2>
+                        <p class="card-text">Income</p>
                     </div>
                     <div id="gained-chart"></div>
                 </div>
@@ -64,7 +75,7 @@
                             </div>
                         </div>
                         <h2 class="fw-bolder mt-1">38.4K</h2>
-                        <p class="card-text">Orders Received</p>
+                        <p class="card-text">Expense</p>
                     </div>
                     <div id="order-chart"></div>
                 </div>
