@@ -7,19 +7,9 @@
 <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/pickers/form-flat-pickr.css')}}">
 
 <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/tables/datatable/dataTables.bootstrap5.min.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/tables/datatable/responsive.bootstrap5.min.css')}}"> 
-
-<style> 
-    .avatar.avatar-xl .avatar-content {
-        height: 40px;
-        width: 40px; 
-    }
-    svg.font-large-1 {
-        height: 1rem !important;
-        width: 1rem !important;
-    }
-</style>
-
+<link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/tables/datatable/responsive.bootstrap5.min.css')}}">  
+<link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/charts/apexcharts.css')}}"> 
+ 
 @endsection
 
 @section('content')
@@ -158,15 +148,14 @@
             <!-- Medal Card -->
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-baseline flex-sm-row flex-column">
-                        <h4 class="card-title">Data Science</h4>
-                        <div class="header-right d-flex align-items-center mt-sm-0 mt-1">
-                            <i data-feather="calendar"></i>
-                            <input type="text" class="form-control flat-picker border-0 shadow-none bg-transparent pe-0" placeholder="YYYY-MM-DD" />
+                    <div class="card-header">
+                        <div>
+                            <h4 class="card-title">Statistics</h4>
+                            <span class="card-subtitle text-muted">Commercial networks and enterprises</span>
                         </div>
                     </div>
                     <div class="card-body">
-                        <canvas class="line-area-chart-ex chartjs" data-height="450"></canvas>
+                        <canvas class="line-chart-ex chartjs" data-height="450"></canvas>
                     </div>
                 </div>
             </div>
@@ -204,23 +193,21 @@
 @endsection
 
 @section('script')
-{{-- 
-<script src="{{asset('app-assets/vendors/js/vendors.min.js')}}"></script> 
-<script src="{{asset('app-assets/js/core/app-menu.js')}}"></script> 
-<script src="{{asset('app-assets/js/core/app.js')}}"></script>  --}}
 
+    <script src="{{asset('app-assets/vendors/js/vendors.min.js')}}"></script> 
+    <script src="{{asset('app-assets/vendors/js/charts/apexcharts.min.js')}}"></script>
+    <script src="{{asset('app-assets/vendors/js/charts/chart.min.js')}}"></script> 
+    <script src="{{asset('app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js')}}"></script> 
+    <script src="{{asset('app-assets/js/scripts/charts/chart-chartjs.js')}}"></script>  
 
-<script src="{{asset('app-assets/vendors/js/charts/chart.min.js')}}"></script> 
-<script src="{{asset('app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js')}}"></script> 
-<script src="{{asset('app-assets/js/scripts/charts/chart-chartjs.js')}}"></script>  
+    <script src="{{asset('app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js')}}"></script> 
+    <script src="{{asset('app-assets/vendors/js/tables/datatable/datatables.buttons.min.js')}}"></script> 
+    <script src="{{asset('app-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js')}}"></script>  
+    <script src="{{asset('app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js')}}"></script>  
+    <script src="{{asset('app-assets/vendors/js/tables/datatable/responsive.bootstrap5.js')}}"></script>   
+    <script src="{{asset('app-assets/js/scripts/pages/app-invoice-list.js')}}"></script>   
 
-<script src="{{asset('app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js')}}"></script> 
-<script src="{{asset('app-assets/vendors/js/tables/datatable/datatables.buttons.min.js')}}"></script> 
-<script src="{{asset('app-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js')}}"></script>  
-<script src="{{asset('app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js')}}"></script>  
-<script src="{{asset('app-assets/vendors/js/tables/datatable/responsive.bootstrap5.js')}}"></script>   
-<script src="{{asset('app-assets/js/scripts/pages/app-invoice-list.js')}}"></script>   
-
- 
+    <script src="{{asset('app-assets/js/core/app-menu.js')}}"></script>
+    <script src="{{asset('app-assets/js/core/app.js')}}"></script>
 
 @endsection
