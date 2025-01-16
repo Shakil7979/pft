@@ -14,21 +14,49 @@
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">  
                 <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Main</span> 
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('dashboard')}}"><i data-feather="mail"></i><span class="menu-title text-truncate" data-i18n="Email">Dashboard </span></a>
+                <li class="nav-item {{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}">
+                    <a class="d-flex align-items-center" href="{{ route('dashboard') }}">
+                        <i data-feather="mail"></i>
+                        <span class="menu-title text-truncate" data-i18n="Email">Dashboard</span>
+                    </a>
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="app-chat.html"><i data-feather="message-square"></i><span class="menu-title text-truncate" data-i18n="Chat">Income</span></a>
+                <li class="nav-item {{ Route::currentRouteName() == 'income.show' ? 'active' : '' }}">
+                    <a class="d-flex align-items-center" href="{{ route('income.show') }}">
+                        <i data-feather="message-square"></i>
+                        <span class="menu-title text-truncate" data-i18n="Chat">Income</span>
+                    </a>
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="app-todo.html"><i data-feather="check-square"></i><span class="menu-title text-truncate" data-i18n="Todo">Expense</span></a>
+                <li class="nav-item {{ Route::currentRouteName() == 'expense.show' ? 'active' : '' }}">
+                    <a class="d-flex align-items-center" href="{{ route('expense.show') }}">
+                        <i data-feather="check-square"></i>
+                        <span class="menu-title text-truncate" data-i18n="Todo">Expense</span>
+                    </a>
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="app-calendar.html"><i data-feather="calendar"></i><span class="menu-title text-truncate" data-i18n="Calendar">Statistics</span></a>
+                <li class="nav-item {{ Route::currentRouteName() == 'statistic.show' ? 'active' : '' }}">
+                    <a class="d-flex align-items-center" href="{{ route('statistic.show') }}">
+                        <i data-feather="calendar"></i>
+                        <span class="menu-title text-truncate" data-i18n="Calendar">Statistics</span>
+                    </a>
                 </li>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="app-kanban.html"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Transactions</span></a>
-                </li> 
-                <li class=" nav-item"><a class="d-flex align-items-center" href="app-file-manager.html"><i data-feather="save"></i><span class="menu-title text-truncate" data-i18n="File Manager">Accounts</span></a>
-                </li> 
-                <li class=" nav-item"><a class="d-flex align-items-center" href="modal-examples.html"><i data-feather="square"></i><span class="menu-title text-truncate" data-i18n="Modal Examples">Settings</span></a>
+                <li class="nav-item {{ Route::currentRouteName() == 'transection.show' ? 'active' : '' }}">
+                    <a class="d-flex align-items-center" href="{{ route('transection.show') }}">
+                        <i data-feather="grid"></i>
+                        <span class="menu-title text-truncate" data-i18n="Kanban">Transactions</span>
+                    </a>
                 </li>
-                  
+                <li class="nav-item {{ Route::currentRouteName() == 'account.show' ? 'active' : '' }}">
+                    <a class="d-flex align-items-center" href="{{ route('account.show') }}">
+                        <i data-feather="save"></i>
+                        <span class="menu-title text-truncate" data-i18n="File Manager">Accounts</span>
+                    </a>
+                </li>
+                <li class="nav-item {{ Route::currentRouteName() == 'settings.show' ? 'active' : '' }}">
+                    <a class="d-flex align-items-center" href="{{ route('settings.show') }}">
+                        <i data-feather="square"></i>
+                        <span class="menu-title text-truncate" data-i18n="Modal Examples">Settings</span>
+                    </a>
+                </li>
+                
             </ul>
         </div>
     </div>

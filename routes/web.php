@@ -1,10 +1,16 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegistrationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\StatisticController;
+use App\Http\Controllers\TransectionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -56,6 +62,27 @@ Route::any('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => 'auth'], function (){
     Route::any('/dashboard',[HomeController::class, 'index'])->name('dashboard');
+
+    // Account Route 
+    Route::get('account', [AccountController::class, 'show'])->name('account.show');
+
+    // Income Route 
+    Route::get('income', [IncomeController::class, 'show'])->name('income.show');
+
+    // Expense Route 
+    Route::get('expense', [ExpenseController::class, 'show'])->name('expense.show');
+
+    // Statistic Route 
+    Route::get('statistic', [StatisticController::class, 'show'])->name('statistic.show');
+
+    // Transection Route 
+    Route::get('transection', [TransectionController::class, 'show'])->name('transection.show');
+
+    // Transection Route 
+    Route::get('settings', [SettingsController::class, 'show'])->name('settings.show');
+
+
+
 });
 
 
