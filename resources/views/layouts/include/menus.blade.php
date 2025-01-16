@@ -16,19 +16,19 @@
                 </li>
                 <li class="nav-item {{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}">
                     <a class="d-flex align-items-center" href="{{ route('dashboard') }}">
-                        <i data-feather="mail"></i>
+                        <i data-feather='home'></i>
                         <span class="menu-title text-truncate" data-i18n="Email">Dashboard</span>
                     </a>
                 </li>
                 <li class="nav-item {{ Route::currentRouteName() == 'income.show' ? 'active' : '' }}">
                     <a class="d-flex align-items-center" href="{{ route('income.show') }}">
-                        <i data-feather="message-square"></i>
+                        <i data-feather='trending-up'></i>
                         <span class="menu-title text-truncate" data-i18n="Chat">Income</span>
                     </a>
                 </li>
                 <li class="nav-item {{ Route::currentRouteName() == 'expense.show' ? 'active' : '' }}">
                     <a class="d-flex align-items-center" href="{{ route('expense.show') }}">
-                        <i data-feather="check-square"></i>
+                        <i data-feather='trending-down'></i>
                         <span class="menu-title text-truncate" data-i18n="Todo">Expense</span>
                     </a>
                 </li>
@@ -40,19 +40,19 @@
                 </li>
                 <li class="nav-item {{ Route::currentRouteName() == 'transection.show' ? 'active' : '' }}">
                     <a class="d-flex align-items-center" href="{{ route('transection.show') }}">
-                        <i data-feather="grid"></i>
+                        <i data-feather='repeat'></i>
                         <span class="menu-title text-truncate" data-i18n="Kanban">Transactions</span>
                     </a>
                 </li>
                 <li class="nav-item {{ Route::currentRouteName() == 'account.show' ? 'active' : '' }}">
                     <a class="d-flex align-items-center" href="{{ route('account.show') }}">
-                        <i data-feather="save"></i>
+                        <i data-feather='user'></i>
                         <span class="menu-title text-truncate" data-i18n="File Manager">Accounts</span>
                     </a>
                 </li>
                 <li class="nav-item {{ Route::currentRouteName() == 'settings.show' ? 'active' : '' }}">
                     <a class="d-flex align-items-center" href="{{ route('settings.show') }}">
-                        <i data-feather="square"></i>
+                        <i data-feather='settings'></i>
                         <span class="menu-title text-truncate" data-i18n="Modal Examples">Settings</span>
                     </a>
                 </li>
